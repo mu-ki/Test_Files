@@ -1,0 +1,27 @@
+
+
+    <input type="button" value="Simple Controlls" id="simple" onclick="simpleFunction()">
+    <input type="button" value="Complex Controlls" id="complex" onclick="complexFunction()">
+ <br>
+<iframe  src="wpf.html" name="iframe_a" id="iframe_1"  height="700px" width="600" title="Iframe Example"  style="padding: 0; margin:0px;">
+
+</iframe>
+<iframe   name="iframe_b" height="700px" width="600" id="iframe_2" style="padding: 0; margin:0px; display: none;">
+
+</iframe>
+<script>
+    
+//   function complexFunction() {
+//     document.getElementById("iframe_2").style.display = "block";
+    
+//   }
+  document.getElementById("complex").addEventListener("click", function() {
+    document.getElementById("iframe_1").style.display = "none";
+
+});
+document.getElementById("simple").addEventListener("click", function() {
+    document.getElementById("iframe_1").style.display = "block";
+
+});
+
+</script>

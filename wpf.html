@@ -1,0 +1,233 @@
+<html>
+
+<head>
+  <style>
+    hr {
+      background-color: #555;
+      border: none;
+      display: block;
+      height: 2px;
+      overflow: visible;
+      position: relative;
+      width: 100%;
+    }
+
+    hr:before {
+      background-color: green;
+      content: '';
+      display: block;
+      height: 4px;
+      left: 0;
+      position: absolute;
+      top: -1px;
+      width: 45%;
+      z-index: 1;
+    }
+
+    #scroll {
+      height: 250px;
+      width: 250px;
+      overflow: auto;
+      margin-left: 200px;
+    }
+
+    #content {
+      height: 300px;
+      width: 500px;
+
+    }
+  </style>
+</head>
+
+<body>
+  <div style="margin: 5px; border:darkgray 2px; width: 500px;">
+
+
+    <br>
+    <label style="color:blue" name="testlabel">Test label</label> <br>
+    <input type="text" value="Test TextBox"  name="testbox" id="testbox" style="color:green;  width: 500px;"><br>
+
+    <label style="color:blue" id="labelFocus" name="labelfocus">testbox2</label> <br>
+    <input type="text" style=" width: 500px;" id="textFocus" name="textfocus"><br>
+
+    <select style=" width: 100px; margin-left: 200px;" id="selectitem" name="selectitem">
+      <option></option>
+      <option>Item 1</option>
+      <option>Item 2</option>
+      <option>Item 3</option>
+    </select>
+    <br>
+    <select style=" width: 100px;  margin-left: 200px;" name="items" id=“items” onchange="itemFn(this)">
+      <option value="0"></option>
+      <option value="1">Item 1</option>
+      <option value="2">Item 2</option>
+      <option value="3">Item 3</option>
+      <option value="4">Item 4</option>
+    </select>
+    <br>
+    <select size="3" style=" width: 500px;" multiple id="box" name="box">
+      <option>List Box Item#1</option>
+      <option>List Box Item#2</option>
+      <option>List Box Item#3</option>
+    </select>
+
+    <br>
+ 
+    <input type="checkbox" name="chk1" value="chk1" >Test CheckBox <br>
+    <input type="checkbox" name="chk2" value="chk2" id="myChk" unchecked onclick="myCheck(this)">3Way TestCheckBox
+    <br>
+    <input type="radio" name="radio" value="radio1"> RadioButton1 <br>
+    <input type="radio" name="radio" value="radio2"> RadioButton2 <br>
+
+    <hr>
+    <input type="range" style="margin-left: 200px;" id="range" name="range">
+
+    <br>
+    <input type="button" value="ContextMenu" style="width: 500px;"><br>
+
+    <button value="InvokeMe" style="width: 500px;" onclick="invokeFn()" id="invoke"> ClickMe</button><br>
+
+    <button value="InvokeMe" style="width: 500px;" ondblclick="invokeFunction()" id="in"> Double Click Me</button><br>
+
+    <select size="4" style=" width: 100px;  margin-left: 200px; white-space: nowrap; overflow: auto;">
+      <option style="color: white;"> select item from select</option>
+      <option></option>
+      <option></option>
+      <option></option>
+      <option></option>
+      <option></option>
+      <option></option>
+      <option></option>
+      <option></option>
+      <option></option>
+    </select>
+    <!-- <div id="scroll" onscroll="scrollFunction()"  >
+      <div id="content"></div>
+    </div> -->
+
+    <br>
+
+    <div id="Toggle1" onclick="popupFunction()">
+      <button value="Popup Toggle1" style="width: 500px; "> Popup Toggle1 </button>
+
+    </div>
+
+    <div style="display:none; border:thin 1px; width: 150px; " id="popup2">
+      some menu item
+    </div>
+
+    <div onclick="popupFunctionMsg()">
+
+      <button value="Popup Toggle2" style="width: 500px; position: absolute;">Popup Toggle2
+
+      </button>
+    </div>
+    <div style="display:none; border:thin 1px; width: 150px; position: absolute;" id="popup1">
+      <input type="checkbox" value="This is a popup" checked name="chk3"> This is a popup
+
+    </div>
+    <br>
+    <br>
+    <label style="color:red">Menu item Checked</label> <br>
+
+    <br>
+    <input type="text" id="vanish" name="vanish">
+    <button id="hide" onclick="hideFn()" name="hide">Hide</button>
+    <button id="visible" onclick="visibleFn()" name="visible">Visible</button>
+
+  </div>
+
+    <div id="content" style="display: none;">
+
+  </div>
+</body>
+
+<script>
+
+
+  function hideFn() {
+    document.getElementById("vanish").style.visibility = "hidden";
+
+  }
+  function visibleFn() {
+    document.getElementById("vanish").style.visibility = "visible";
+
+  }
+
+  function complexFunction() {
+    document.getElementById("content").style.display = "block";
+
+  }
+
+  function complexFunction() {
+
+  }
+
+  document.getElementById("textFocus").addEventListener("focus", function () {
+    document.getElementById("labelFocus").innerHTML = "focus";
+  })
+
+  function popupFunction() {
+    document.getElementById("popup1").style.display = "block";
+
+  }
+  function popupFunctionMsg() {
+    document.getElementById("popup2").style.display = "block";
+
+  }
+
+
+  function invokeFn() {
+    var invoke = document.getElementById("invoke");
+    invoke.innerHTML = "invoked!"
+  }
+
+
+  function invokeFunction() {
+    var invoke = document.getElementById("in");
+    invoke.innerHTML = "invoked!"
+  }
+
+  function itemFn(select) {
+    var item = select.options[select.selectedIndex].value;
+    // alert(item);
+    if (item == "4") {
+      confirm("Do you really want to do it ")
+    }
+  }
+
+  function scrollFunction() {
+    var elmnt = document.getElementById("scroll");
+    var x = elmnt.scrollLeft;
+    var y = elmnt.scrollTop;
+
+  }
+
+  //  if( document.getElementById("myChk").indeterminate = "true")
+  // document.getElementById("myChk").checked = true;
+
+  function myCheck(Control) {
+    if (Control.checked) {
+      Control.indeterminate = true;
+      Control.unchecked = false;
+    }
+    if (!Control.indeterminate) {
+      Control.checked = true;
+      Control.unchecked = false;
+    }
+    if (Control.unchecked)
+      Control.unchecked = true;
+
+
+  }
+
+
+  window.onmousemove = function () {
+
+    document.getElementById("popup1").style.display = "none";
+    document.getElementById("popup2").style.display = "none";
+  }
+
+</script>
+
+</html>
